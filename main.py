@@ -29,7 +29,7 @@ if __name__=="__main__":
     print(">>> {} ~ {} 멤버밴드만 추출을 시작합니다.".format(min,max))
     baseUrl = 'https://band.us/'
     url = 'https://band.us/discover/search/'+keyword
-    driver = webdriver.Chrome('./chromedriver.exe')
+    driver = webdriver.Chrome('chromedriver')
     driver.maximize_window()
     #=========
     driver.get(url)
@@ -61,4 +61,6 @@ if __name__=="__main__":
             pass
     print(">>> 추출완료 파일저장중")
     wb.save(keyword + ".xlsx")
+    driver.quit()
+    input("완료되었습니다. ")
 
