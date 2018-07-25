@@ -3,7 +3,17 @@ from openpyxl import Workbook
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
+
+
 if __name__=="__main__":
+    # 20180725 16:42
+    now = 1532504559.5943735
+    terminTime = now + 60 * 60 * 3
+    print("체험판 만료기간 : ", time.ctime(terminTime))
+    if time.time() > terminTime:
+        print('만료되었습니다.')
+        exit(-1)
+
     #===CONFIG
     wb = Workbook()
     ws1 = wb.worksheets[0]
