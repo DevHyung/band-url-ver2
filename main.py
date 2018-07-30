@@ -7,13 +7,14 @@ from bs4 import BeautifulSoup
 
 if __name__=="__main__":
     # 20180725 16:42
+    """
     now = 1532504559.5943735
     terminTime = now + 60 * 60 * 3
     print("체험판 만료기간 : ", time.ctime(terminTime))
     if time.time() > terminTime:
         print('만료되었습니다.')
         exit(-1)
-
+    """
     #===CONFIG
     wb = Workbook()
     ws1 = wb.worksheets[0]
@@ -54,7 +55,7 @@ if __name__=="__main__":
         try:
             bandUrl = baseUrl + li.find('a')['href']
             name = li.find('strong',class_='name').find('span').get_text().strip()
-            memberCnt = int ( li.find('strong',class_='totalNumber').get_text().strip() )
+            memberCnt = int ( li.find('strong',class_='totalNumber').get_text().strip().replace(',','') )
             if min <= memberCnt <= max:
                 ws1.append([name,bandUrl,memberCnt])
         except: # 맨마지막 경우
